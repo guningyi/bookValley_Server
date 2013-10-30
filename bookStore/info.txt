@@ -1,0 +1,7 @@
+EPC_Log: vc_MessageInformation=Clear Alarm:SMS://10.5.4.230:2775;i_Priority=3
+ LOG_ERR: 
+ ALARM: [type=0, severity=5, key=(SAPC, SMS://10.5.4.230:2775, 3019), cause=Connection Failure to Notification Server, time=2013-10-9 08:42:52]
+
+
+
+ ALARM: \\[type=0, severity=2, key=\\(SAPC, SMS://10.5.4.230:2775, 3019\\), cause=Connection Failure to Notification Server, time=\\d#(4)-\\d#(1,2)-\\d#(1,2) [0-2][0-9]:[0-5][0-9]:[0-5][0-9]\\] in tc_10_TCPConnFail_IOException.dicosApptrace.tmp.log"

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book Valley Backend Management</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<div class="bookStore">
+        <table width="200px" border="1" cellspacing="0" cellpadding="20" align="left" >
+        <tr>  
+        <td>  
+        <form action="manageDB_bookStore.php" method="post">
+             <p>书名: <input type="text" name="bookName" /></p>
+             <p>编号: <input type="text" name="id" /></p>
+             <p>类别: <input type="text" name="catagory" /></p>
+             <p>价格: <input type="text" name="price" /></p>
+             <select name = manageBookStoreType> 
+                  <option value="addBookIntoBookStore">增加</option> 
+                  <option value="updateBookIntoBookStore">更新</option> 
+                  <option value="deleteBookFromBookStore">删除</option> 
+             </select>
+             <input type="submit" value="提交" />
+        </form>
+      </td>
+      </tr>
+
+      <tr>  
+        <td>  
+        <form action="manageDB_user.php" method="post">
+             <p>用户名: <input type="text" name="userName" /></p>
+             <p>金币: <input type="text" name="gold" /></p>
+             <p>积分: <input type="text" name="score" /></p>
+             <select name = manageUserType> 
+                  <option value="changeGold">变更金币</option> 
+                  <option value="changeScore">变更积分</option>
+             </select>
+             <input type="submit" value="提交" />
+        </form>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+        <form action="manageDB_All.php" method="post">
+             <p>数据库名: <input type="text" name="dbName" /></p>
+             <input type="submit" value="删除" />
+        </form>
+        </td>
+      </tr>
+      </table>
+
+
+
+</div>
+
+</body>
+</html>
