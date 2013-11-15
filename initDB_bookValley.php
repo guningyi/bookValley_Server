@@ -86,6 +86,7 @@
    */
     $sql_readList = "CREATE TABLE readList(
     userId   INTEGER(50) NOT NULL PRIMARY KEY,
+    userName VARCHAR(100) NOT NULL,
    	bookName VARCHAR(100) NOT NULL,
     bookCatagory INTEGER(20) NOT NULL DEFAULT 0,
     bookPrice INTEGER(50) NOT NULL DEFAULT 0)";
