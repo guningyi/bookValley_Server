@@ -2,7 +2,7 @@
     require_once 'bookValley_server_config.php';
     /*响应用户查询书籍*/
 
-   $bookName = $_POST['userName'];
+   $userName = $_POST['userName'];
 
 
     /*
@@ -38,7 +38,7 @@
     /*
        准备要执行的插入操作
     */
-    $sql_search = "SELECT readList.bookName FROM bookStore WHERE readList.userName = '$userName'";
+    $sql_search = "SELECT readList.bookName FROM readList WHERE readList.userName = '$userName'";
     /*    
         执行查找操作
     */
@@ -58,7 +58,7 @@
         $info = mysql_fetch_array($sql_result);
         if ($info == null)
         {
-            echo "";
+            echo "null null";
         }
         else
         {

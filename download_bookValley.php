@@ -60,6 +60,7 @@
         $sql_bookPrice_result = mysql_query($sql_bookPrice,$conn);
         if (!sql_bookPrice_result)
         {
+            header('HTTP/1.1 201 NOK'); 
         	echo "价格查询失败";
         	die ("search failed : " . mysql_error());
         }
@@ -68,7 +69,10 @@
         	$priceInfo = mysql_fetch_array($sql_bookPrice_result);
 	        if ($priceInfo == null)
 	        {
+                header('HTTP/1.1 201 NOK'); 
 	            echo "价格错误";
+                mysql_close($conn);
+                exit();
 	        }
 	        else
 	        {
@@ -79,6 +83,7 @@
             $sql_userGold_result = mysql_query($sql_userGold,$conn);
             if (!sql_userGold_result)
 	        {
+                header('HTTP/1.1 201 NOK'); 
 	        	echo "用户金币查询失败";
 	        	die ("search failed : " . mysql_error());
 	        }
@@ -87,7 +92,10 @@
 	        	$goldInfo = mysql_fetch_array($sql_userGold_result);
 	            if ($goldInfo == null)
 		        {
+                    header('HTTP/1.1 201 NOK'); 
 		            echo "金币错误";
+                    mysql_close($conn);
+                    exit();
 		        }
 		        else
 		        {
@@ -96,6 +104,7 @@
 	        }
 	        if ($userGold < $bookPrice)
 	        {
+                header('HTTP/1.1 201 NOK'); 
 	        	echo "你的金币不够，快速充值吧！";
 	        	exit();
 	        	mysql_close($conn);
@@ -108,6 +117,7 @@
         //从文件夹中查找书籍
         if(!file_exists(DEFAULT_BOOK_STORE_PATH . $bookName))//判断文件是否存在
         {
+            header('HTTP/1.1 201 NOK'); 
             echo "文件查询:没有你要下载的书籍";
         } 
         else
