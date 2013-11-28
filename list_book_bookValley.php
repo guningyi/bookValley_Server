@@ -48,22 +48,11 @@
         die ("search failed : " . mysql_error());
     }
     else
-    {   /*
-        $info = mysql_fetch_array($sql_result);
-        foreach ($info as $value) 
+    {         
+        while ($info = mysql_fetch_array($sql_result, MYSQL_NUM))
         {
-            echo $value;
+            echo $info[0] . " ";
         }
-        */
-        $info = mysql_fetch_array($sql_result);
-        if ($info == null)
-        {
-            echo "null null";
-        }
-        else
-        {
-            echo $info;
-        }  	
     }
      /*
        关闭连接
