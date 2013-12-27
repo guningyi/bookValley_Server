@@ -138,8 +138,8 @@
 
             //更新数据库，先实现扣除用户的金币，后续要更新用户的购买记录表       
   
-            list($aa,$a) = $bookPrice;
-            list($bb,$b) = $userGold;
+            list($a) = $bookPrice;
+            list($b) = $userGold;
             $gold = $b-$a;
 
             $sql_update_gold = "UPDATE user SET gold = '$gold' WHERE user.userName = '$userName'";
