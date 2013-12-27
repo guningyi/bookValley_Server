@@ -58,7 +58,7 @@
         //根据用户名去判断用户的金币数是否大于下载的书的价格
         $sql_bookPrice = "SELECT bookStore.bookPrice FROM bookStore WHERE bookStore.bookName = '$bookName'";
         $sql_bookPrice_result = mysql_query($sql_bookPrice,$conn);
-        if (!sql_bookPrice_result)
+        if (!$sql_bookPrice_result)
         {
             header('HTTP/1.1 201 NOK'); 
         	echo "价格查询失败";
