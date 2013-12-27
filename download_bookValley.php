@@ -151,7 +151,7 @@
             }
             else
             {
-                echo "update success!";
+                echo "下载成功！";
             }
             //
             
