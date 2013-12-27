@@ -8,6 +8,7 @@
 
     $bookPrice = 0;
     $userGold = 0;
+    $gold = 0;
 
     /*
       连接mysql服务器器
@@ -81,7 +82,7 @@
 	        //查询用户的金币数 	
         	$sql_userGold = "SELECT user.gold FROM user WHERE user.userName = '$userName'";
             $sql_userGold_result = mysql_query($sql_userGold,$conn);
-            if (!sql_userGold_result)
+            if (!$sql_userGold_result)
 	        {
                 header('HTTP/1.1 201 NOK'); 
 	        	echo "用户金币查询失败";
@@ -106,8 +107,8 @@
 	        {
                 header('HTTP/1.1 201 NOK'); 
 	        	echo "你的金币不够，快速充值吧！";
-	        	exit();
 	        	mysql_close($conn);
+                exit();
 	        }
         }	
 
@@ -135,7 +136,24 @@
             //加入判断文件时候全部传完的逻辑
             //TO-DO
 
-            //更新数据库，先实现扣除用户的金币，后续要更新用户的购买记录表
+            //更新数据库，先实现扣除用户的金币，后续要更新用户的购买记录表       
+  
+            list($aa,$a) = $bookPrice;
+            list($bb,$b) = $userGold;
+            $gold = $b-$a;
+
+            $sql_update_gold = "UPDATE user SET gold = '$gold' WHERE user.userName = '$userName'";
+            mysql_query("set names utf8");
+            $result_update = mysql_query($sql_update_gold,$conn);
+            if(!$result_update)
+            {
+                die("update failed:". mysql_error());
+            }
+            else
+            {
+                echo "update success!";
+            }
+            //
             
         }
     }
