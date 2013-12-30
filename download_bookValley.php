@@ -1,5 +1,6 @@
 <?php 
     require_once 'bookValley_server_config.php';
+    require_once 'sqlDB_util.php';
     /*用于响应客户端发来的下载书籍请求*/
 
     $bookName = $_POST['downloadBookName'];
@@ -142,6 +143,12 @@
             list($b) = $userGold;
             $gold = $b-$a;
 
+
+            //function update($dataBase_name, $table_name, $update_raw, $update_data, $where_raw, $where_data)
+            $return = update("bookValley", "user", "gold", $gold, "userName", $userName);
+            echo $return;
+
+/*
             $sql_update_gold = "UPDATE user SET gold = '$gold' WHERE user.userName = '$userName'";
             mysql_query("set names utf8");
             $result_update = mysql_query($sql_update_gold,$conn);
@@ -153,6 +160,7 @@
             {
                 echo "下载成功！";
             }
+*/
             //
             
         }
