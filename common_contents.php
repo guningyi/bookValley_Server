@@ -18,4 +18,11 @@
     define('FILE_READ_SUCCESS', '20000002');
     define('FILE_READ_FAILED',  '20000003');
 
+
+    //message to chinese
+    define('MSG_NO_BOOK_IN_DB', '你要下载的书籍本站还未收录');
+    define('MSG_NO_BOOK_IN_FILE', '未找到你要下载的书籍');
+    define('LEAK_GOLD', '金币不够，快去充值吧。');
+    define('SEARCH_ERROR', '对不起，查找出错了。');
+    
 ?>

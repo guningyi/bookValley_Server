@@ -21,7 +21,7 @@
     $sql_result = $db->query("bookName", "bookStore", $condition_query);  
     if(!$sql_result)//这里是检查数据库中是否有登记此书
     {
-    	echo "数据库查询:没有你要下载的书籍";
+    	echo MSG_NO_BOOK_IN_DB;
         die ("search failed : " . mysql_error());
     }
     else
@@ -32,7 +32,7 @@
         if (!$sql_bookPrice_result)
         {
             header('HTTP/1.1 201 NOK'); 
-        	echo "价格查询失败";
+        	echo SEARCH_ERROR;
         	die ("search failed : " . mysql_error());
         }
         else
@@ -41,8 +41,7 @@
 	        if ($priceInfo == null)
 	        {
                 header('HTTP/1.1 201 NOK'); 
-	            echo "价格错误";
-                mysql_close($conn);
+	            echo SEARCH_ERROR;
                 exit();
 	        }
 	        else
@@ -51,11 +50,11 @@
 	        } 
 	        //查询用户的金币数 	
             $condition_query = "user.userName = '$userName'";
-            $sql_userGold_result = $db->query("userName", "user", $condition_query);
+            $sql_userGold_result = $db->query("gold", "user", $condition_query);
             if (!$sql_userGold_result)
 	        {
                 header('HTTP/1.1 201 NOK'); 
-	        	echo "用户金币查询失败";
+	        	echo SEARCH_ERROR;
 	        	die ("search failed : " . mysql_error());
 	        }
 	        else
@@ -64,8 +63,7 @@
 	            if ($goldInfo == null)
 		        {
                     header('HTTP/1.1 201 NOK'); 
-		            echo "金币错误";
-                    mysql_close($conn);
+		            echo SEARCH_ERROR;
                     exit();
 		        }
 		        else
@@ -76,8 +74,7 @@
 	        if ($userGold < $bookPrice)
 	        {
                 header('HTTP/1.1 201 NOK'); 
-	        	echo "你的金币不够，快速充值吧！";
-	        	mysql_close($conn);
+	        	echo LEAK_GOLD;
                 exit();
 	        }
         }	
@@ -87,15 +84,15 @@
         if ($result_readfile ==FILE_NOT_EXISTS)
         {
             header('HTTP/1.1 201 NOK'); 
-            echo "文件查询:没有你要下载的书籍";
+            echo MSG_NO_BOOK_IN_FILE;
         }
         else if($result_readfile == FILE_READ_SUCCESS)
         {
+            
             list($a) = $bookPrice;
             list($b) = $userGold;
             $gold = $b-$a;
-            //function update($dataBase_name, $table_name, $update_raw, $update_data, $where_raw, $where_data)
-            $return = update("bookValley", "user", "gold", $gold, "userName", $userName);
+            $return = $db->update("user", "gold", $gold, "userName", $userName);
             echo $return;
         }
     }
