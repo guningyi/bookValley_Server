@@ -92,7 +92,12 @@
             list($a) = $bookPrice;
             list($b) = $userGold;
             $gold = $b-$a;
-            $return = $db->update("user", "gold", $gold, "userName", $userName);
+            $return = $db->update("user", "gold", $gold, "userName", $userName);//update the gold
+            $condition_query = "bookStore.bookName = '$bookName'";
+            $result = $db->query("bookDownloadTimes", "bookStore", $condition_query);
+            $downloadTimesInfo = mysql_fetch_array($result);
+            list($c) = $downloadTimesInfo;
+            $db->update("bookStore", "bookDownloadTimes", $c+1, "bookName", "$bookName");  //update the book download times
             echo $return;
         }
     }

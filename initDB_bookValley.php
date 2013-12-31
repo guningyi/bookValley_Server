@@ -66,7 +66,9 @@
     id   INTEGER(50) NOT NULL AUTO_INCREMENT PRIMARY KEY,
    	bookName VARCHAR(100) NOT NULL,
     bookCatagory INTEGER(20) DEFAULT 0,
-    bookPrice INTEGER(50) DEFAULT 0)";
+    bookPrice INTEGER(50) DEFAULT 0,
+    bookGrade INTEGER(50) DEFAULT 0,  
+    bookDownloadTimes INTEGER(50) DEFAULT 0)";
    /*
        执行创建表的操作
    */
